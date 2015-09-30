@@ -14,6 +14,8 @@
   <div class="field">
     <%= f.label :word %>
     <%= f.text_field :word %>
+    <%= f.label :type %>
+    <%= f.select(:word_type, ['', 'noun', 'verb', 'pronoun', 'adverb', 'adjective']) %>
     <%= f.label :meaning %>
     <%= f.text_field :meaning, size: "50"%>
   </div>

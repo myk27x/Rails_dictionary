@@ -1,14 +1,10 @@
 <p id="notice"><%= notice %></p>
-<div id="header">
-  <img id="logo" src="/TIY_logo.png"/>
-  <h1>---@ Dictionary Database @---</h1>
-</div>
 
 <div id="show_word">
   <%= link_to 'Edit', edit_definition_path(@definition) %> |
-  <%= link_to 'Back', definitions_path %>
+  <%= link_to 'Home', definitions_path %>
   <div>
-    <strong><%= @definition.word %>:</strong>
+    <strong><%= @definition.word %>:</strong><%= @definition.word_type %>
   </div>
   <p>
     <%= @definition.meaning %>
