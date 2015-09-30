@@ -4,6 +4,28 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  h1, div {
+    text-align: center;
+    a{
+      color: red;
+      &:visited {
+        color: red;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  padding-right: 25px;
+  border-bottom: 1px solid black;
 }
 
 p, ol, ul, td {
@@ -33,7 +55,7 @@ a {
 
 div {
   &.field, &.actions {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 }
 
@@ -44,16 +66,17 @@ div {
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  display: table;
+  display: inline-block;
 }
 
 #error_explanation {
-  width: 450px;
+  width: 390px;
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
+  margin-left: 420px;
 
   h2 {
     text-align: left;
@@ -69,5 +92,43 @@ div {
   ul li {
     font-size: 12px;
     list-style: square;
+  }
+}
+
+#header {
+  color: white;
+  background-color: #213138;
+  h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+  }
+  #logo{
+    width: 150px;
+    height: 150px;
+  }
+}
+
+#add_word {
+  padding-bottom: 30px;
+}
+
+.words {
+  text-align: right;
+}
+
+th {
+  text-align: left;
+}
+
+#show_word {
+  text-align: center;
+  padding-top: 5px;
+  div {
+    font-size: 26px;
+    padding-top: 15px;
+  }
+  p {
+    font-size: 16px;
   }
 }

@@ -12,14 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :word %><br>
+    <%= f.label :word %>
     <%= f.text_field :word %>
-  </div>
-  <div class="field">
-    <%= f.label :meaning %><br>
-    <%= f.text_field :meaning %>
+    <%= f.label :meaning %>
+    <%= f.text_field :meaning, size: "50"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit %><br>
+    <%= link_to 'Cancel', definitions_path %>
   </div>
 <% end %>

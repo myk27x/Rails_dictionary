@@ -1,11 +1,17 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Definitions</h1>
+<div id="header">
+  <img id="logo" src="/TIY_logo.png"/>
+  <h1>---@ Dictionary Database @---</h1>
+</div>
+<div id="add_word">
+  Help us out and <%= link_to 'ADD A WORD', new_definition_path %> to our list!
+</div>
 
 <table>
   <thead>
     <tr>
-      <th>Word</th>
+      <th></th>
+      <th>Words</th>
       <th>Meaning</th>
       <th colspan="3"></th>
     </tr>
@@ -13,17 +19,13 @@
 
   <tbody>
     <% @definitions.each do |definition| %>
-      <tr>
-        <td><%= definition.word %></td>
-        <td><%= definition.meaning %></td>
-        <td><%= link_to 'Show', definition %></td>
-        <td><%= link_to 'Edit', edit_definition_path(definition) %></td>
-        <td><%= link_to 'Destroy', definition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= link_to 'Show', definition %>
+      <%= link_to 'Edit', edit_definition_path(definition) %>
+      <%= link_to 'Remove', definition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td class="words"><%= definition.word %></td>
+      <td>:<%= definition.meaning %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Definition', new_definition_path %>
