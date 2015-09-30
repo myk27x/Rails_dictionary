@@ -12,6 +12,10 @@ class DefinitionsController < ApplicationController
   def show
   end
 
+  def search
+    @definitions = Definition.all
+  end
+
   # GET /definitions/new
   def new
     @definition = Definition.new

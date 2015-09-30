@@ -1,0 +1,26 @@
+<div id="header">
+  <img id="logo" src="/TIY_logo.png"/>
+  <h1>---@ Dictionary Database @---</h1>
+</div>
+<div id="show_word">
+  <div>
+    <%= form_tag("/search", method: "get") do %>
+    <%= submit_tag("Search") %>
+      <%= text_field_tag(:q) %>
+    <% end %>
+  </div>
+<%= link_to 'Back', definitions_path %>
+</div>
+
+    <% @definitions.select do |definition| %>
+    <% if definition.word.include?(params[:q]) %>
+    <div id="show_word">
+      <div>
+        <strong><%= definition.word %>:</strong>
+      </div>
+      <p>
+        <%= definition.meaning %>
+      </p>
+      <% end %>
+      <% end %>
+    </div>

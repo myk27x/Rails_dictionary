@@ -5,6 +5,12 @@
 </div>
 <div id="add_word">
   Help us out and <%= link_to 'ADD A WORD', new_definition_path %> to our list!
+  <div>
+    <%= form_tag("/search", method: "get") do %>
+    <%= submit_tag("Search") %>
+      <%= text_field_tag(:q) %>
+    <% end %>
+  </div>
 </div>
 
 <table>
