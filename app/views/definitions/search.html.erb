@@ -1,26 +1,42 @@
+<p id="notice"><%= notice %></p>
 <div id="header">
   <img id="logo" src="/TIY_logo.png"/>
   <h1>---@ Dictionary Database @---</h1>
 </div>
-<div id="show_word">
+<div id="add_word">
+  Help us out and <%= link_to 'ADD A WORD', new_definition_path %> to our list!
   <div>
     <%= form_tag("/search", method: "get") do %>
     <%= submit_tag("Search") %>
       <%= text_field_tag(:q) %>
     <% end %>
   </div>
-<%= link_to 'Back', definitions_path %>
 </div>
 
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Words</th>
+      <th>Meaning</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
     <% @definitions.select do |definition| %>
     <% if definition.word.include?(params[:q]) %>
-    <div id="show_word">
-      <div>
-        <strong><%= definition.word %>:</strong>
-      </div>
-      <p>
-        <%= definition.meaning %>
-      </p>
+    <tr>
+      <td><%= link_to 'Show', definition %>
+        <%= link_to 'Edit', edit_definition_path(definition) %>
+        <%= link_to 'Remove', definition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="words"><%= definition.word %></td>
+        <td>:<%= definition.meaning %></td>
+      </tr>
       <% end %>
-      <% end %>
-    </div>
+    <% end %>
+  </tbody>
+</table>
+<div id="show_word">
+  <%= link_to 'Back', definitions_path %>
+</div>
