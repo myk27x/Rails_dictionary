@@ -22,13 +22,14 @@
 
   <tbody>
     <% @definitions.each do |definition| %>
-    <tr>
-      <td><%= link_to 'Show', definition %>
-      <%= link_to 'Edit', edit_definition_path(definition) %>
-      <%= link_to 'Remove', definition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <td class="words"><%= definition.word %></td>
+    <tr class="spaces">
+      <td id="edit"><%= link_to '', edit_definition_path(definition), class: "glyphicon glyphicon-edit" %></td>
+      <td class="words"><%= link_to "#{definition.word}", definition %></td>
       <td>:<%= definition.word_type %></td>
       <td>:<%= definition.meaning %></td>
+      <td id="delete">
+        <%= link_to '', definition, method: :delete, class: "glyphicon glyphicon-trash", data: { confirm: 'Are you sure?' } %>
+      </td>
     </tr>
     <% end %>
   </tbody>
