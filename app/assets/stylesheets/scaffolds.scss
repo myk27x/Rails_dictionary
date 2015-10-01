@@ -6,17 +6,6 @@ body {
   line-height: 18px;
   h1, div {
     text-align: center;
-    a{
-      color: red;
-      &:visited {
-        color: red;
-      }
-      &:hover {
-        color: #fff;
-        background-color: #000;
-        text-decoration: none;
-      }
-    }
   }
 }
 
@@ -64,15 +53,6 @@ pre {
   font-size: 11px;
 }
 
-// a {
-//   color: #000;
-//
-//   &:visited {
-//     color: #666;
-//   }
-//
-// }
-
 div {
   &.field, &.actions {
     margin-bottom: 15px;
@@ -98,7 +78,6 @@ div {
   margin-bottom: 20px;
   background-color: #f0f0f0;
   margin-left: 420px;
-
   h2 {
     text-align: left;
     font-weight: bold;
@@ -109,10 +88,19 @@ div {
     background-color: #c00;
     color: #fff;
   }
-
   ul li {
     font-size: 12px;
     list-style: square;
+  }
+}
+
+#cancel {
+  height: 30px;
+  a {
+    color: red;
+  }
+  a:hover {
+    text-decoration: none;
   }
 }
 
@@ -130,8 +118,38 @@ div {
   }
 }
 
+.navbar {
+  color: black;
+  display: inline-flex;
+  width: 1000px;
+  align-items: center;
+  a {
+    color: black;
+    &:hover {
+      color: black;
+      text-decoration: none;
+    }
+  }
+  img {
+     height: 40px;
+     width: 40px;
+  }
+}
+
+#homelink {
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
 #add_word {
-  padding-bottom: 30px;
+  color: black;
+}
+
+#nav_spacer {
+  width: 595px;
+}
+
+#to_search {
 }
 
 th {
@@ -140,12 +158,21 @@ th {
 
 #show_word {
   text-align: center;
-  padding-top: 5px;
+  padding-top: 25px;
   div {
+    color: green;
     font-size: 26px;
     padding-top: 15px;
   }
   p {
+    padding-top: 10px;
     font-size: 16px;
+  }
+  #return a {
+    color: black;
+    &:hover {
+      color: blue;
+      text-decoration: none;
+    }
   }
 }
