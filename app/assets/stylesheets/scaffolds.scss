@@ -95,7 +95,8 @@ div {
 }
 
 #cancel {
-  height: 30px;
+  padding-top: 10px;
+  font-size: 26px;
   a {
     color: red;
   }
@@ -169,10 +170,15 @@ th {
     font-size: 16px;
   }
   #return a {
+    font-size: 26px;
     color: black;
     &:hover {
       color: blue;
       text-decoration: none;
     }
   }
+}
+
+#return {
+  font-size: 26px;
 }

@@ -15,6 +15,7 @@ class DefinitionsController < ApplicationController
 
   def search
     @definitions = Definition.all
+    @definitions = Definition.order(:word).page params[:page]
   end
 
   # GET /definitions/new
