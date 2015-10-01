@@ -28,9 +28,10 @@
       <td>:<%= definition.word_type %></td>
       <td>:<%= definition.meaning %></td>
       <td id="delete">
-        <%= link_to '', definition, method: :delete, class: "glyphicon glyphicon-trash", data: { confirm: 'Are you sure?' } %>
+        <%= link_to '', definition, method: :delete, class: "glyphicon glyphicon-remove-sign", data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
     <% end %>
   </tbody>
 </table>
+<div> <%= paginate @definitions %> </div>

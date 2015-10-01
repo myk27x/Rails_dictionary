@@ -35,16 +35,26 @@ table {
   text-align: right;
 }
 
-#edit, #delete {
-  a:hover {
+#delete a {
+  color: black;
+  &:hover {
     color: red;
     text-decoration: none;
   }
 }
 
+#edit a {
+  color: black;
+  &:hover {
+    color: green;
+    text-decoration: none;
+  }
+}
+
+
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 18px;
 }
 

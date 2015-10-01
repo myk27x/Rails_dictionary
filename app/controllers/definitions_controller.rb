@@ -5,6 +5,7 @@ class DefinitionsController < ApplicationController
   # GET /definitions.json
   def index
     @definitions = Definition.all
+    @definitions = Definition.order(:word).page params[:page]
   end
 
   # GET /definitions/1

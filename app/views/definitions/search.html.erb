@@ -14,6 +14,7 @@
     <tr>
       <th></th>
       <th>Words</th>
+      <th></th>
       <th>Meaning</th>
       <th colspan="3"></th>
     </tr>
@@ -21,18 +22,17 @@
 
   <tbody>
     <% @definitions.select do |definition| %>
-    <% if definition.word.include?(params[:q]) %>
-    <tr>
-      <td><%= link_to 'Show', definition %>
-        <%= link_to 'Edit', edit_definition_path(definition) %>
-        <%= link_to 'Remove', definition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td class="words"><%= definition.word %></td>
-        <td>:<%= definition.meaning %></td>
-      </tr>
-      <% end %>
+    <% if definition.word.include?(params[:q]) || definition.meaning.include?(params[:q])%>
+    <tr class="spaces">
+      <td id="edit"><%= link_to '', edit_definition_path(definition), class: "glyphicon glyphicon-edit" %></td>
+      <td class="words"><%= link_to "#{definition.word}", definition %></td>
+      <td>:<%= definition.word_type %></td>
+      <td>:<%= definition.meaning %></td>
+      <td id="delete">
+        <%= link_to '', definition, method: :delete, class: "glyphicon glyphicon-remove-sign", data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
-<div id="show_word">
-  <%= link_to 'Home', definitions_path %>
-</div>
