@@ -1,5 +1,5 @@
 class ExamplesController < ApplicationController
-  before_action :set_definition, only: [:show, :edit, :update, :destroy]
+  before_action :set_example, only: [:show, :edit, :update, :destroy]
 
   # GET /examples
   def index
@@ -10,7 +10,9 @@ class ExamplesController < ApplicationController
   end
 
   # GET /examples/new
-  def add
+  def new
+    @definition = Definition.find(params[:definition_id])
+    @example = Example.new
   end
 
   # GET /examples/1/edit
@@ -19,11 +21,11 @@ class ExamplesController < ApplicationController
 
   # POST /examples
   def create
-    @examples = Example.new(example_params)
+    @example = Example.new(example_params)
 
     respond_to do |format|
       if @example.save
-        format.html { redirect_to @example, notice: 'Example was successfully created.' }
+        format.html { redirect_to definitions_path, notice: 'Example was successfully created.' }
         format.json { render :show, status: :created, location: @example }
       else
         format.html { render :new }

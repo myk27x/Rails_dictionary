@@ -6,6 +6,6 @@
   <p>
     :<%= @definition.meaning %>
   </p>
-  <div><%= link_to 'Add Example', new_example_path(definition_id: @definition.id) %></div>
-  <div id="return"> <%= link_to '', definitions_path, class: "glyphicon glyphicon-arrow-left"%>
+  <%= render 'form' %>
+  <div id="return"><%= link_to '', definitions_path, class: "glyphicon glyphicon-arrow-left"%>
 </div>
