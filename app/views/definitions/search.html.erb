@@ -12,8 +12,7 @@
   </thead>
 
   <tbody>
-    <% @definitions.select do |definition| %>
-    <% if definition.word.include?(params[:q]) || definition.meaning.include?(params[:q])%>
+    <% @definitions.each do |definition| %>
     <tr class="spaces">
       <td id="edit"><%= link_to '', edit_definition_path(definition), class: "glyphicon glyphicon-edit" %></td>
       <td class="words"><%= link_to "#{definition.word}", definition %></td>
@@ -23,7 +22,6 @@
         <%= link_to '', definition, method: :delete, class: "glyphicon glyphicon-remove-sign", data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
-    <% end %>
     <% end %>
   </tbody>
 </table>

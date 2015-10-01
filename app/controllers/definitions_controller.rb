@@ -14,8 +14,9 @@ class DefinitionsController < ApplicationController
   end
 
   def search
-    @definitions = Definition.all
-    @definitions = Definition.order(:word).page params[:page]
+    @search = params[:q]
+    @definitions = Definition.where("word LIKE ? OR meaning LIKE ?", "%#{@search}%", "%#{@search}%")
+    @definitions = @definitions.order(:word).page params[:page]
   end
 
   # GET /definitions/new
