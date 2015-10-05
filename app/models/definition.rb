@@ -5,4 +5,8 @@ class Definition < ActiveRecord::Base
   has_many :examples
 
   paginates_per 10
+
+  def fancy?
+    word.length > 16
+  end
 end
