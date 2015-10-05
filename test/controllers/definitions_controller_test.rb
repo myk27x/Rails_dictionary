@@ -18,7 +18,7 @@ class DefinitionsControllerTest < ActionController::TestCase
 
   test "should create definition" do
     assert_difference('Definition.count') do
-      post :create, definition: { meaning: @definition.meaning, word: @definition.word }
+      post :create, definition: { word: "Webrick", meaning: "Barely a good framework" }
     end
 
     assert_redirected_to definition_path(assigns(:definition))
@@ -36,6 +36,7 @@ class DefinitionsControllerTest < ActionController::TestCase
 
   test "should update definition" do
     patch :update, id: @definition, definition: { meaning: @definition.meaning, word: @definition.word }
+
     assert_redirected_to definition_path(assigns(:definition))
   end
 
@@ -46,4 +47,30 @@ class DefinitionsControllerTest < ActionController::TestCase
 
     assert_redirected_to definitions_path
   end
+
+  test "should get search" do
+    get :search
+
+    assert_response :success
+
+    assert_not_nil assigns(:definitions)
+  end
+
+  test "search for word should return match" do
+    get :search, q: 'Rails'
+
+    # The definitions we expect to match are an array containing just the first one (since it has Rails in the word)
+    expected_definitions = [definitions(:one)]
+
+    # Expect the assgins (instance vars from controller) to be equal to the expected_definitions
+    assert_equal expected_definitions, assigns(:definitions)
+  end
+
+  test "search for meaning should return match" do
+    get :search, q: 'second'
+    expected_meaning = [definitions(:two)]
+
+    assert_equal expected_meaning, assigns(:definitions)
+  end
+
 end

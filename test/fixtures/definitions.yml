@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  word: MyString
-  meaning: MyString
+  word: Rails
+  meaning: My favorite web framework
 
 two:
-  word: MyString
-  meaning: MyString
+  word: Sinatra
+  meaning: My second favorite web framework
