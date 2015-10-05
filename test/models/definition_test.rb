@@ -43,4 +43,14 @@ class DefinitionTest < ActiveSupport::TestCase
 
     refute word.fancy?, "words with less than 17 letters are not fancy"
   end
+
+  test "returns expected value when given a search parameter" do
+    word1 = Definition.create(word: "banana", meaning: "a yummy fruit")
+    word2 = Definition.create(word: "bark", meaning: "words from a dog")
+
+    expected_return = Definition.search('banana')
+
+    assert expected_return == [word1]
+  end
+
 end
