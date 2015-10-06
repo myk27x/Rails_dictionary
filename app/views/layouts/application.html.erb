@@ -10,13 +10,12 @@
 <body>
 
   <div id="header">
-    <%= image_tag "brain_logo.jpg" %>
-    <h1>---<@ Dictionary Database @>---</h1>
     <nav class="navbar navbar-default">
       <a href="/"><img src="/brain_logo.jpg"/></a>
       <div id="homelink"><%= link_to '', definitions_path, class: "glyphicon glyphicon-home"%></div>
+      <div id="nav_spacer">
+      </div>
       <div id="add_word"><%= link_to 'ADD A WORD', new_definition_path %></div>
-      <div id="nav_spacer"></div>
       <div id="to_search">
         <%= form_tag("/search", method: "get") do %>
         <%= text_field_tag(:q) %>
@@ -24,6 +23,7 @@
         <% end %>
       </div>
     </nav>
+    <h1>---<@ Dictionary Database @>---</h1>
   </div>
 
   <%= yield %>

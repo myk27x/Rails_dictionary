@@ -108,6 +108,8 @@ div {
 #header {
   color: white;
   background-color: #213138;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   h1 {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -119,11 +121,13 @@ div {
   }
 }
 
-.navbar {
+#header .navbar {
   color: black;
   display: inline-flex;
   width: 1000px;
   align-items: center;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   a {
     color: black;
     &:hover {
@@ -144,10 +148,12 @@ div {
 
 #add_word {
   color: black;
+  margin-right: 10px;
 }
 
 #nav_spacer {
   width: 595px;
+  display: inline-flex;
 }
 
 #to_search {
