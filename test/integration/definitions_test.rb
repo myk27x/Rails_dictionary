@@ -10,25 +10,31 @@ class DefinitionsTest < ActionDispatch::IntegrationTest
   test "validates correct word returned from search" do
     get search_path, q: 'cat'
 
-    expected_return = [@word2]
+    assert_response :success
 
-    assert_equal expected_return, assigns(:definitions)
+    # The first table cell with class of 'words' contains the matched word
+    assert_select "td.words", @word2.word
   end
 
   test "link exists on homepage to create new word" do
     get definitions_path
 
-    assert_select 'div#add_word', 1
+    assert_select 'div#add_word'
   end
 
   test "new word link shows a form" do
     get new_definition_path
 
-    assert_select 'form', 6
+    assert_select 'form.new_definition'
   end
 
   test "creating a new word adds the word to the database" do
+    post definitions_path, definition: {word: 'pair', meaning: 'a grouping of 2 like things'}
+    posted_word = Definition.find_by_word('pair')
 
+    assert_not_nil posted_word
+    assert_equal "pair", posted_word.word
+    assert_equal "a grouping of 2 like things", posted_word.meaning
   end
 
   test "after creating a new word redirects to main page and new word is displayed" do
