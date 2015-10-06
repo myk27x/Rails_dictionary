@@ -37,8 +37,16 @@ class DefinitionsTest < ActionDispatch::IntegrationTest
     assert_equal "a grouping of 2 like things", posted_word.meaning
   end
 
-  test "after creating a new word redirects to main page and new word is displayed" do
+  test "after creating a new word redirects to show page and new word is displayed" do
+    post definitions_path, definition: {word: 'pair', meaning: 'a grouping of 2 like things'}
+    posted_word = Definition.find_by_word('pair')
 
+    assert_redirected_to definition_path(posted_word)
+
+    follow_redirect!
+
+    assert_select 'div#show_word div', posted_word.word
+    assert_select 'div#show_word p'  , posted_word.meaning
   end
 
 end
