@@ -24,7 +24,7 @@ class DefinitionsTest < ActionDispatch::IntegrationTest
   test "new word link shows a form" do
     get new_definition_path
 
-    assert_select 
+    assert_select 'form', 6
   end
 
   test "creating a new word adds the word to the database" do
