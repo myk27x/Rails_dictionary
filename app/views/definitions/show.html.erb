@@ -4,7 +4,7 @@
   <div><strong><%= @definition.word %></div>
     <span> -</strong><%= @definition.word_type %> </span>
   <p>
-    :<%= @definition.meaning %>
+    <%= @definition.meaning %>
   </p>
   <div><%= link_to 'Add Example', new_example_path(definition_id: @definition.id) %></div>
   <div id="return"> <%= link_to '', definitions_path, class: "glyphicon glyphicon-arrow-left"%>
