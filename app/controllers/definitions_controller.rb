@@ -1,6 +1,7 @@
 class DefinitionsController < ApplicationController
-  before_action :ensure_logged_in
+  before_action :ensure_logged_in, except: [:index, :search]
   before_action :set_definition, only: [:show, :edit, :update, :destroy]
+
 
   def index
     @definitions = Definition.all

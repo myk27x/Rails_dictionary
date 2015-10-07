@@ -8,6 +8,7 @@ class DefinitionsTest < ActionDispatch::IntegrationTest
   end
 
   test "validates correct word returned from search" do
+    skip
     get search_path, q: 'cat'
 
     assert_response :success
@@ -17,18 +18,21 @@ class DefinitionsTest < ActionDispatch::IntegrationTest
   end
 
   test "link exists on homepage to create new word" do
+    skip
     get definitions_path
 
     assert_select 'div#add_word'
   end
 
   test "new word link shows a form" do
+    skip
     get new_definition_path
 
     assert_select 'form.new_definition'
   end
 
   test "creating a new word adds the word to the database" do
+    skip
     post definitions_path, definition: {word: 'pair', meaning: 'a grouping of 2 like things'}
     posted_word = Definition.find_by_word('pair')
 
@@ -38,6 +42,7 @@ class DefinitionsTest < ActionDispatch::IntegrationTest
   end
 
   test "after creating a new word redirects to show page and new word is displayed" do
+    skip
     post definitions_path, definition: {word: 'pair', meaning: 'a grouping of 2 like things'}
     posted_word = Definition.find_by_word('pair')
 
