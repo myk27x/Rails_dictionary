@@ -8,7 +8,7 @@ class DefinitionsTest < ActionDispatch::IntegrationTest
   end
 
   test "validates correct word returned from search" do
-    skip
+    # skip
     get search_path, q: 'cat'
 
     assert_response :success
@@ -18,7 +18,7 @@ class DefinitionsTest < ActionDispatch::IntegrationTest
   end
 
   test "link exists on homepage to create new word" do
-    skip
+    # skip
     get definitions_path
 
     assert_select 'div#add_word'

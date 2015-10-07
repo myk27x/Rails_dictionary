@@ -16,6 +16,7 @@ class DefinitionsControllerTest < ActionController::TestCase
   test "should get new" do
     skip
     get :new
+
     assert_response :success
   end
 
@@ -57,7 +58,7 @@ class DefinitionsControllerTest < ActionController::TestCase
   end
 
   test "should get search" do
-    skip
+    # skip
     get :search
 
     assert_response :success
@@ -66,7 +67,7 @@ class DefinitionsControllerTest < ActionController::TestCase
   end
 
   test "should find word via word" do
-    skip
+    # skip
     get :search, q: 'Rails'
 
     # The definitions we expect to match are an array containing just the first one (since it has Rails in the word)
@@ -77,7 +78,7 @@ class DefinitionsControllerTest < ActionController::TestCase
   end
 
   test "should find word via meaning" do
-    skip
+    # skip
     get :search, q: 'second'
     expected_meaning = [definitions(:two)]
 
