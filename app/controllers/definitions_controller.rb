@@ -1,5 +1,5 @@
 class DefinitionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :search]
   before_action :set_definition, only: [:show, :edit, :update, :destroy]
 
 
