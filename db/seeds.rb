@@ -1,6 +1,6 @@
 require "faker"
 
-User.create(email: 'gavin@example.com', password: 'sekret')
+User.create(email: 'gavin@example.com', password: 'sekret44')
 User.create(email: 'jason@example.com', password: 'alsosekret')
 User.create(email: 'toni@example.com' , password: 'supersekret')
 

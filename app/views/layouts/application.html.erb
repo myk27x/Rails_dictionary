@@ -14,13 +14,19 @@
       <a href="/"><img src="/brain_logo.jpg"/></a>
       <div id="homelink"><%= link_to '', definitions_path, class: "glyphicon glyphicon-home"%></div>
       <div id="nav_spacer">
-        <% if session[:id] %>
+        <% if user_signed_in? %>
         <div id="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Is this really goodbye? :'(" } %></div>
         <% else %>
         <div id="login"><%= link_to "Login", new_user_session_path, method: :create %></div>
         <% end %>
       </div>
-      <div id="add_word"><%= link_to 'ADD A WORD', new_definition_path %></div>
+      <div id="add_word">
+        <% if user_signed_in? %>
+        <%= link_to 'ADD A WORD', new_definition_path %>
+        <% else %>
+        <div id="add_word"></div>
+        <% end %>
+      </div>
       <div id="to_search">
         <%= form_tag("/search", method: "get") do %>
         <%= text_field_tag(:q) %>
@@ -29,10 +35,6 @@
       </div>
     </nav>
     <h1>---<@ Dictionary Database @>---</h1>
-  </div>
-  <div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   </div>
 
 
