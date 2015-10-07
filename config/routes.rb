@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :definitions
-  # resources :examples
+  resources :examples
 
   resources :sessions do
     collection do
