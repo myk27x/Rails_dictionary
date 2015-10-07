@@ -1,12 +1,12 @@
-def self.from_omniauth(auth)
-  user = where(provider: auth['provider'], uid: auth['uid']).first_or_create
+class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  def github
+    @user = User.from_omniauth(request.env["omniauth.auth"])
 
-  user.name         = auth.info.name
-  user.email        = auth.info.email
-  user.nickname     = auth.info.nickname
-  user.access_token = auth.credentials.token
-  user.password     = Devise.friendly_token[0,20]
-  user.save!
-
-  return user
+    if @user.persisted?
+      sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
+      set_flash_message(:notice, :success, :kind => "Github") if is_navigational_format?
+    else
+      redirect_to new_user_registration_url
+    end
+  end
 end
