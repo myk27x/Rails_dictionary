@@ -15,9 +15,9 @@
       <div id="homelink"><%= link_to '', definitions_path, class: "glyphicon glyphicon-home"%></div>
       <div id="nav_spacer">
         <% if session[:id] %>
-        <div id="logout"><%= link_to "Logout", sessions_path, method: :delete, data: { confirm: "Is this really goodbye? :'(" } %></div>
+        <div id="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Is this really goodbye? :'(" } %></div>
         <% else %>
-        <div id="login"><%= link_to "Login", sessions_path, method: :create %></div>
+        <div id="login"><%= link_to "Login", new_user_session_path, method: :create %></div>
         <% end %>
       </div>
       <div id="add_word"><%= link_to 'ADD A WORD', new_definition_path %></div>
@@ -30,6 +30,11 @@
     </nav>
     <h1>---<@ Dictionary Database @>---</h1>
   </div>
+  <div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+
 
   <%= yield %>
 
