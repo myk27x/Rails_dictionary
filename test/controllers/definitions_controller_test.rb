@@ -8,6 +8,7 @@ class DefinitionsControllerTest < ActionController::TestCase
   test "should get index" do
     # skip
     get :index
+
     assert_response :success
     assert_not_nil assigns(:definitions)
   end
