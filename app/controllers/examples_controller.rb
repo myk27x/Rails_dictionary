@@ -1,25 +1,21 @@
 class ExamplesController < ApplicationController
+  before_action :ensure_logged_in
   before_action :set_example, only: [:show, :edit, :update, :destroy]
 
-  # GET /examples
   def index
   end
 
-  # GET /examples/1
   def show
   end
 
-  # GET /examples/new
   def new
     @definition = Definition.find(params[:definition_id])
     @example = Example.new
   end
 
-  # GET /examples/1/edit
   def edit
   end
 
-  # POST /examples
   def create
     @example = Example.new(example_params)
 
@@ -34,7 +30,6 @@ class ExamplesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /examples/1
   def update
     respond_to do |format|
       if @example.update(example_params)
@@ -47,7 +42,6 @@ class ExamplesController < ApplicationController
     end
   end
 
-  # DELETE /examples/1
   def destroy
     @example.destroy
     respond_to do |format|
@@ -56,14 +50,21 @@ class ExamplesController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_example
-      @example = Example.find(params[:id])
-    end
+private
+  def set_example
+    @example = Example.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def example_params
-      params.require(:example).permit(:usage)
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def example_params
+    params.require(:example).permit(:usage)
+  end
+
+  def ensure_logged_in
+    if current_user.nil?
+      redirect_to new_session_path
+      return false
     end
+  end
+
 end

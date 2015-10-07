@@ -1,15 +1,12 @@
 class DefinitionsController < ApplicationController
+  before_action :ensure_logged_in
   before_action :set_definition, only: [:show, :edit, :update, :destroy]
 
-  # GET /definitions
-  # GET /definitions.json
   def index
     @definitions = Definition.all
     @definitions = Definition.order(:word).page params[:page]
   end
 
-  # GET /definitions/1
-  # GET /definitions/1.json
   def show
   end
 
@@ -18,17 +15,13 @@ class DefinitionsController < ApplicationController
     @definitions = @definitions.order(:word).page params[:page]
   end
 
-  # GET /definitions/new
   def new
     @definition = Definition.new
   end
 
-  # GET /definitions/1/edit
   def edit
   end
 
-  # POST /definitions
-  # POST /definitions.json
   def create
     @definition = Definition.new(definition_params)
 
@@ -43,8 +36,6 @@ class DefinitionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /definitions/1
-  # PATCH/PUT /definitions/1.json
   def update
     respond_to do |format|
       if @definition.update(definition_params)
@@ -57,8 +48,6 @@ class DefinitionsController < ApplicationController
     end
   end
 
-  # DELETE /definitions/1
-  # DELETE /definitions/1.json
   def destroy
     @definition.destroy
     respond_to do |format|
@@ -67,14 +56,22 @@ class DefinitionsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_definition
-      @definition = Definition.find(params[:id])
-    end
+private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def definition_params
-      params.require(:definition).permit(:word, :meaning, :word_type)
+  def set_definition
+    @definition = Definition.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def definition_params
+    params.require(:definition).permit(:word, :meaning, :word_type)
+  end
+
+  def ensure_logged_in
+    if current_user.nil?
+      redirect_to new_session_path
+      return false
     end
+  end
+
 end
