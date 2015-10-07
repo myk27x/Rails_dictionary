@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
-root 'definitions#index'
+  root 'definitions#index'
 
-get 'search', to: 'definitions#search'
+  get 'search', to: 'definitions#search'
+
+end
