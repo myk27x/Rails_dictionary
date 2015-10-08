@@ -193,3 +193,65 @@ th {
 #login_form .container {
   width: 327px;
 }
+
+.panel-body {
+  align-self: center;
+}
+
+.logging {
+  width: 660px;
+  height: 40px;
+  display: flex;
+  position: relative;
+  left: 330px;
+  // background-color: blue;
+  #email{
+    display: inline-block;
+    width: 220px;
+  }
+  #password {
+    display: inline-block;
+    width: 220px;
+  }
+  #sub_butt {
+    position: relative;
+    bottom: 1px;
+    display: inline-block;
+  }
+}
+
+div {
+  .checkbox {
+    display: inline-flex;
+    margin: 4px 0px 0px 0px;
+    .forget {
+      position: relative;
+      top: 6px;
+      display: flex;
+      // background-color: purple;
+      #box {
+        padding-left: 5px;
+        // background-color: orange;
+        // display: inline-flex;
+      }
+      #elephant {
+        // background-color: yellow;
+        display: inline-flex;
+        label {
+          padding: 0px;
+        }
+      }
+    }
+  }
+}
+
+.social_links {
+  text-align: center;
+  padding-top: 5px;
+  position: relative;
+  right: 12px;
+}
+
+#more_links {
+  text-align: center;
+}

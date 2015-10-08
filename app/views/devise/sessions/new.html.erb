@@ -1,26 +1,49 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4><%= t('.sign_in', :default => "Logging in") %></h4>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="panel-body">
+    <div class="logging">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f| %>
+      <div class="form-group" id="email">
+        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: 'email' %>
+      </div>
+      <div class="form-group" id="password">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: 'password' %>
+      </div>
+      <div id="sub_butt">
+        <%= f.submit  t('.sign_in', :default => "Sign in"), class: "btn btn-primary" %>
+      </div>
+      <div class="checkbox">
+        <% if devise_mapping.rememberable? %>
+        <label class="forget">
+          <div id="box">
+            <%= f.check_box :remember_me %>
+          </div>
+          <% end %>
+          <div id="elephant">
+            <%= f.label :remember_me %>
+          </div>
+          <% end %>
+        </label>
+      </div>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="social_links">
+      or sign in using:
+      <%= link_to omniauth_authorize_path(resource_name, :github), class: "btn btn-primary" do %>
+      <i class="fa fa-lg fa-github-alt"></i>
+      <%= t('.sign_in_with_provider', provider: "github".titleize, :default => "") %>
+      <% end %>
+      <a class="btn btn-primary" href=""><i class="fa fa-lg fa-facebook-square"></i></a>
+      <a class="btn btn-primary" href=""><i class="fa fa-lg fa-twitter"></i></a>
+      <a class="btn btn-primary" href=""><i class="fa fa-lg fa-amazon"></i></a>
+      <a class="btn btn-primary" href=""><i class="fa fa-lg fa-google-plus"></i></a>
+      <a class="btn btn-primary" href=""><i class="fa fa-lg fa-flickr"></i></a>
+      <a class="btn btn-primary" href=""><i class="fa fa-lg fa-pinterest-p"></i></a>
+      <a class="btn btn-primary" href=""><i class="fa fa-lg fa-linkedin"></i></a>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+<div id="more_links">
+  <%= render "devise/shared/links" %>
+</div>
