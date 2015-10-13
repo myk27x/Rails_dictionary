@@ -28,10 +28,7 @@
         <% end %>
       </div>
       <div id="to_search">
-        <%= form_tag("/search", method: "get") do %>
-        <%= text_field_tag(:q) %>
-        <%= submit_tag("Search") %>
-        <% end %>
+        <input type="text" placeholder="Search">
       </div>
     </nav>
     <h1>---<@ Dictionary Database @>---</h1>
