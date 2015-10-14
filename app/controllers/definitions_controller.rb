@@ -12,7 +12,7 @@ class DefinitionsController < ApplicationController
   end
 
   def search
-    @definitions = Definition.search(params[:q])
+    @definitions = Definition.search(params[:definition])
     @definitions = @definitions.order(:word).page params[:page]
   end
 

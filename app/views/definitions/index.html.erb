@@ -14,19 +14,7 @@
   <tbody>
     <% @definitions.each do |definition| %>
     <tr class="spaces">
-      <td id="edit">
-        <% if user_signed_in? %>
-        <%= link_to '', edit_definition_path(definition), class: "glyphicon glyphicon-edit" %>
-        <% end %>
-      </td>
-      <td class="words"><%= link_to "#{definition.word}", definition %></td>
-      <td>:<%= definition.word_type %></td>
-      <td>:<%= definition.meaning %></td>
-      <td id="delete">
-        <% if user_signed_in? %>
-        <%= link_to '', definition, method: :delete, class: "glyphicon glyphicon-remove-sign", data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </td>
+      <% render 'search' %>
     </tr>
     <% end %>
   </tbody>
