@@ -11,12 +11,8 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @definitions.each do |definition| %>
-    <tr class="spaces">
-      <% render 'search' %>
-    </tr>
-    <% end %>
+  <tbody id="spaces">
+    <%= render @definitions %>
   </tbody>
 </table>
 <div> <%= paginate @definitions %> </div>
